@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HMDA 2022 Mortgage Underwriting Audit</title>
+<style>body{margin:0;background:#f4f6f8;color:#182736;font:1rem/1.65 system-ui,sans-serif}main{max-width:66rem;margin:auto;padding:2.5rem 1.25rem}h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2}h2{margin-top:2rem;color:#174c65}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;background:white}th,td{padding:.65rem;text-align:left;border-bottom:1px solid #ccd8df}th{background:#174c65;color:white}tbody tr:nth-child(even){background:#eaf1f5}</style></head><body><main>
+<h1>HMDA 2022 住房贷款审批审计 / Mortgage underwriting audit</h1>
+<h2>研究问题 / Research question</h2>
+<p lang="zh">当贷款申请和信用评分保持不变时，改变提示词中的种族信息是否会影响 DeepSeek Flash 的审批和利率建议？</p>
+<p lang="en">Does changing the race information in a prompt change DeepSeek Flash’s approval and interest-rate recommendations for the same mortgage application and credit score?</p>
+<h2>数据与方法 / Data and methods</h2>
+<p lang="zh">从 2022 年公开 HMDA 数据中筛选符合条件的贷款申请，使用种子 2022 抽取 1,000 份真实申请。对每份申请设置 640、715 和 790 三个信用评分。实验一比较 Black 和 White 标签，共 6,000 条回复。实验二复用这 6,000 条回复，加入 Asian、Hispanic 和未披露种族条件，共 15,000 条独立回复。DeepSeek Flash 关闭推理模式。</p>
+<p lang="en">We sampled 1,000 real applications from the filtered public 2022 HMDA file using seed 2022. Each application was evaluated at credit scores of 640, 715, and 790. Experiment 1 compared Black and White labels across 6,000 responses. Experiment 2 reused those responses and added Asian, Hispanic, and no race disclosure, for 15,000 unique responses overall. DeepSeek Flash was run with thinking disabled.</p>
+<h2>实验结果 / Results</h2>
+<div class="scroll"><table><thead><tr><th scope="col">条件 / Condition</th><th scope="col">批准率 / Approval</th><th scope="col">与 White 的差及 95% CI / Approval gap (pp)</th><th scope="col">平均建议利率 / Mean recommended rate</th><th scope="col">与 White 的差及 95% CI / Rate gap (pp)</th></tr></thead><tbody>
+<tr><td>White</td><td>94.10%</td><td>Reference</td><td>4.755%</td><td>Reference</td></tr>
+<tr><td>Asian</td><td>94.30%</td><td>+0.20 [−0.81, +1.21]</td><td>4.697%</td><td>−0.058 [−0.097, −0.019]</td></tr>
+<tr><td>Black</td><td>89.40%</td><td>−4.70 [−5.93, −3.47]</td><td>4.918%</td><td>+0.164 [+0.123, +0.204]</td></tr>
+<tr><td>Hispanic</td><td>91.87%</td><td>−2.23 [−3.29, −1.18]</td><td>4.835%</td><td>+0.080 [+0.041, +0.120]</td></tr>
+<tr><td>未披露 / No disclosure</td><td>82.83%</td><td>−11.27 [−12.72, −9.81]</td><td>5.019%</td><td>+0.264 [+0.223, +0.306]</td></tr>
+</tbody></table></div>
+<p lang="zh">先在同一申请和评分下计算相对于 White 的差，再对三个评分取平均。95% t 置信区间基于 1,000 个申请层面的差值，未进行多重比较校正。利率均值包括模型对所有情景给出的建议利率。</p>
+<p lang="en">We computed differences relative to White within each application and score, then averaged over the three scores. The 95% t intervals use 1,000 application-level differences and are unadjusted for multiple comparisons. Rate averages include recommendations for all scenarios.</p>
+<h2>结论与局限 / Conclusion and limitations</h2>
+<p lang="zh">在实验一中，Black 标签对应较低的批准率和较高的建议利率。在实验二中，未披露种族的条件与 White 条件之间的差值最大。结果衡量的是特定提示词和模型设置下的建议变化。实验使用真实申请资料、实验设置的信用评分和种族标签，未分析真实贷款机构的决策或贷后表现。</p>
+<p lang="en">In Experiment 1, the Black label was associated with lower approval and a higher recommended rate. In Experiment 2, the no-disclosure condition had the largest gap relative to White on both outcomes. The estimates describe changes in recommendations under this model and prompt setup. Application data were real, and scores and race labels were experimental. Actual lender decisions and repayment performance were outside this comparison.</p>
+<h2>AI 辅助与验证 / AI assistance and verification</h2>
+<p lang="en">Codex 协助准备样本、生成和修复 API 调用脚本，以及汇总配对结果。实验日志按申请、条件和评分核对，确认覆盖实验二预设的全部 15,000 个情景。</p>
+<p lang="en">Codex assisted with sample preparation, API script development and repair, and paired analysis. The saved responses were checked against the planned application, condition, and score combinations, confirming coverage of all 15,000 Experiment 2 scenarios.</p>
+</main></body></html>
