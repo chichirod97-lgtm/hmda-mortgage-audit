@@ -24,4 +24,12 @@
 <h2>AI 辅助与验证 / AI assistance and verification</h2>
 <p lang="en">Codex 协助准备样本、生成和修复 API 调用脚本，以及汇总配对结果。实验日志按申请、条件和评分核对，确认覆盖实验二预设的全部 15,000 个情景。</p>
 <p lang="en">Codex assisted with sample preparation, API script development and repair, and paired analysis. The saved responses were checked against the planned application, condition, and score combinations, confirming coverage of all 15,000 Experiment 2 scenarios.</p>
+<section id="mitigation"><h2>提示词干预 / Prompt mitigation (6A and 6B)</h2>
+<p lang="zh">每种干预均使用相同的 1,000 份 HMDA 申请和 6,000 个情景。6A 要求避免偏见，6B 要求遵守提示词列出的公平贷款规则。</p>
+<p>Each intervention repeated the same 6,000 scenarios across 1,000 applications. Experiment 6A added a no-bias instruction. Experiment 6B added the paper’s fair-lending instruction.</p>
+<div class="scroll"><table><thead><tr><th>Black − White 差值 / Gap (pp)</th><th>Baseline</th><th>6A</th><th>6B</th><th>6B − 6A [95% CI]</th></tr></thead><tbody>
+<tr><th>批准率 / Approval</th><td>−4.70</td><td>−2.47</td><td>−1.13</td><td>+1.33 [+0.21, +2.45]</td></tr>
+<tr><th>建议利率 / Recommended rate</th><td>+0.164</td><td>+0.095</td><td>+0.038</td><td>−0.057 [−0.109, −0.005]</td></tr></tbody></table></div>
+<p lang="zh">与基准相比，6A 和 6B 的两个估计差距均缩小。置信区间基于申请层面的配对差值，未进行多重比较校正。</p>
+<p>Relative to baseline, both estimated gaps narrowed under both prompts. For 6A the changes were +2.23 pp [+0.75, +3.71] in approval and −0.069 pp [−0.122, −0.015] in recommended rate. For 6B they were +3.57 pp [+2.24, +4.89] and −0.125 pp [−0.179, −0.072]. Intervals use paired application-level changes and are unadjusted for multiple comparisons.</p></section>
 </main></body></html>
